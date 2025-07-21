@@ -1,15 +1,28 @@
 import Card from "@/components/common/Card";
-import React from "react";
+import ModalForm from "@/components/common/PostModal";
+import React, { useState } from "react";
 
-const home = () => {
+
+export default function Home() {
+  const [items, setItems] = useState<{ title: string; content: string }[]>([]);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleAddItem = (data: { title: string; content: string }) => {
+    setItems([...items, data]);
+    setShowModal(false);
+  };
+
   return (
-    <div>
-        <h1>Home Page</h1>
-        <Card title="Nairobi" content="The Heart of Kenya"/>
-        <Card title="Thika" content="Pineapples are here "/>
-        <Card title="Nyeri" content="Murima King"/>
+    <div className="flex w-full h-screen bg-amber-50 flex-col" >
+      <button  onClick={() => setShowModal(true)}>Add Item</button>
+      {showModal && <ModalForm onSubmit={handleAddItem} onClose={() => setShowModal(false)} />}
+      <ul>
+        {items.map((item, idx) => (
+          <li key={idx}>
+            <Card title={item.title} content={item.content}/>
+          </li>
+        ))}
+      </ul>
     </div>
   );
-};
-
-export default home;
+}
