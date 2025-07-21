@@ -1,5 +1,6 @@
 import Card from "@/components/common/Card";
 import ModalForm from "@/components/common/PostModal";
+import Header from "@/components/layout/Header";
 import React, { useState } from "react";
 
 
@@ -14,6 +15,7 @@ export default function Home() {
 
   return (
     <div className="flex w-full h-screen bg-amber-50 flex-col" >
+      <Header/>
       <button  onClick={() => setShowModal(true)}>Add Item</button>
       {showModal && <ModalForm onSubmit={handleAddItem} onClose={() => setShowModal(false)} />}
       <ul>
