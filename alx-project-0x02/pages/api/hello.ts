@@ -10,5 +10,4 @@ export default function handler(
   res: NextApiResponse<Data>,
 ) {
   res.status(200).json({ name: "John Doe" });
-  res.redirect(200,"/about")
 }

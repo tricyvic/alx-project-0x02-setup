@@ -1,14 +1,16 @@
-import Link from 'next/link'
-import React from 'react'
+import Link from "next/link";
 
-const Header = () => {
-  return (
-    <div className='flex w-full bg-blue-500 h-10 justify-between items-center px-3 text-amber-50'>
-        <Link href={"/about"}>About</Link><br />
-        <Link href={"/home"}>Home</Link><br />
-        <Link href={"/posts"} >Posts</Link>
-    </div>
-  )
+export default function Header(){
+    return(
+        <div className="flex justify-between bg-blue-500 p-4 w-full">
+            <nav className="flex space-x-4">
+                <Link href="/home" className="text-white hover:text-blue-200">
+                    Home
+                </Link>
+                <Link href="/about" className="text-white hover:text-blue-200">
+                    About
+                </Link>
+            </nav>
+        </div>
+    )
 }
-
-export default Header
